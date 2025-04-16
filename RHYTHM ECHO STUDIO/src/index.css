@@ -1,0 +1,148 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 188 100% 50%;
+    --primary-foreground: 0 0% 6%;
+
+    --secondary: 270 73% 73%;
+    --secondary-foreground: 0 0% 6%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 350 95% 42%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 270 73% 73%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border selection:bg-accent/25 selection:text-white;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-dark-bg text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .glass-card {
+    @apply relative bg-black/30 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+  
+  .nav-link {
+    @apply relative cursor-pointer text-white/90 hover:text-white px-4 py-2 transition-colors duration-300 text-sm font-medium;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-[2px] bg-electric-blue transition-all duration-300 ease-in-out;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold my-4 lg:my-8 text-white relative
+      after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:bg-neon-purple after:rounded-full;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-electric-blue via-neon-purple to-crimson-red bg-clip-text text-transparent;
+  }
+  
+  .cta-button {
+    @apply bg-neon-purple text-white px-8 py-3 rounded-full font-medium text-lg 
+      hover:animate-pulse-glow transition-all duration-300 hover:bg-opacity-90 shadow-lg shadow-neon-purple/20
+      focus:outline-none focus:ring-2 focus:ring-neon-purple/50 inline-block;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg hover:shadow-neon-purple/20;
+  }
+  
+  .divider-line {
+    @apply w-16 h-1 bg-gradient-to-r from-electric-blue to-neon-purple rounded-full my-4;
+  }
+  
+  .reveal-animation {
+    @apply opacity-0;
+  }
+  
+  .social-icon {
+    @apply text-white/80 hover:text-white transition-colors duration-300 
+      hover:scale-110 transform mx-1 p-2 rounded-full hover:bg-white/10;
+  }
+}
+
+/* Custom animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image hover effects */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom {
+  transition: transform 0.5s ease;
+}
+
+.img-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F0F0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
